@@ -1,0 +1,45 @@
+package com.company;
+
+public class Grocery extends Item implements Tax, Discount{
+    private double price;
+    private double units;
+    private double discount;
+    final double taxc = 0.5;
+
+    public Grocery(double x, double y, double z, int itemCode, String Name){
+        super(itemCode, Name);
+        this.price = x;
+        this.units = y;
+        this.discount = z;
+
+    }
+    public double computeDiscount(){
+        if (discount == 0){
+            return 0;
+        }
+        else{
+            discount = price * units * .02;
+            return discount;
+        }
+    }
+    public double computeTax(){
+        double Tax = price * units * taxc/100;
+        return Tax;
+
+    }
+    public double computeTotalPrice(){ //compute final price for the item
+        double totalPrice = price * units - discount + computeTax(); //add tax here
+        return totalPrice;
+    }
+    public void displayGrocery(){
+        display(); //display itemCode and Name
+        System.out.println("Unit Price: "+ price); // display unit price
+        System.out.println("units: "+ units); //display units
+        System.out.println("Subtotal: " + price * units);
+        System.out.println("Discount: " + computeDiscount());
+        System.out.println("2% Discount: " + discount); //display savings
+        System.out.println("Tax: " + computeTax()); //compute tax amount
+        System.out.println("Total Price: " + computeTotalPrice()); //compute final price
+
+    }
+}

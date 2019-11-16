@@ -1,0 +1,49 @@
+package com.company;
+
+public class Clothing extends Item implements Tax, Discount {
+    private String brand;
+    private double price;
+    private double units;
+    private double discount;
+    final double taxp = 8.5;
+
+    public Clothing(String x, double y, double z, double a, int itemCode, String Name) {
+        super(itemCode, Name);
+        this.brand = x;
+        this.price = y;
+        this.units = z;
+        this.discount = a;
+    }
+
+    public double computeDiscount() {
+        if (discount == 0){
+            return 0;
+        }
+        else{
+            discount = price * .1;
+            return discount;
+        }
+
+    }
+    public double computeTax(){
+        double Tax = price * units * taxp/100;
+        return Tax;
+
+    }
+
+    public double computeTotalPrice() { //compute final price for the item
+        double totalPrice = price * units - discount + computeTax();
+        return totalPrice;
+    }
+
+    public void displayClothing() {
+        display(); //display item and Name
+        System.out.println("Brand: " + brand);
+        System.out.println("Unit Price: " + price);
+        System.out.println("Units: " + units);
+        System.out.println("Subtotal: " + price * units);
+        System.out.println("Discount: " + computeDiscount());
+        System.out.println("Tax: " + computeTax());
+        System.out.println("Total Price: "+ computeTotalPrice());
+    }
+}

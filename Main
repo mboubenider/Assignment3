@@ -1,15 +1,30 @@
 package com.company;
 
-public class Item {
-    private int itemCode;
-    private String Name;
+public class Main{
+    public static void main (String[] args){
+        Grocery gr1 = new Grocery (1.5, 2, 0, 11, "Bread");
+        Grocery gr2 = new Grocery (0.75, 6, 1, 12, "Apple");
 
-    public Item (int x, String y){
-        itemCode = x;
-        Name = y;
-    }
-    public void display(){
-        System.out.println("itemCode: " + itemCode);
-        System.out.println("Name: "+ Name);
+        System.out.println("GROCERIES:");
+        gr1.displayGrocery();
+        System.out.println("-------------------------");
+        gr2.displayGrocery();
+
+        System.out.println();
+        System.out.println();
+
+
+        Clothing c1 = new Clothing ("Levis", 35, 1, 0, 21, "Jeans");
+        Clothing c2 = new Clothing ("Izod", 25, 2, 1, 22, "Dress Shirt");
+
+        System.out.println("CLOTHES:");
+        c1.displayClothing();
+        System.out.println("------------------------");
+        c2.displayClothing();
+
+        System.out.println();
+
+        double totalBill = gr1.computeTotalPrice() + gr2.computeTotalPrice() + c1.computeTotalPrice() + c2.computeTotalPrice();
+        System.out.println("Total bill amount for all four items: " + totalBill);
     }
 }

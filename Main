@@ -1,0 +1,15 @@
+package com.company;
+
+public class Item {
+    private int itemCode;
+    private String Name;
+
+    public Item (int x, String y){
+        itemCode = x;
+        Name = y;
+    }
+    public void display(){
+        System.out.println("itemCode: " + itemCode);
+        System.out.println("Name: "+ Name);
+    }
+}
